@@ -14,7 +14,7 @@ class MapView extends React.Component {
 
   static propTypes = {
       mapItems: PropTypes.array.isRequired, // list of dictionaries where each dict is a {mapType: 'orthophoto', url: <tiles.json>},
-      selectedMapType: PropTypes.oneOf(['orthophoto', 'dsm', 'dtm']),
+      selectedMapType: PropTypes.oneOf(['orthophoto', 'dsm', 'dtm', 'regions']),
       title: PropTypes.string,
       public: PropTypes.bool
   };
@@ -79,6 +79,10 @@ class MapView extends React.Component {
       {
         label: "Terrain Model",
         type: "dtm"
+      },
+      {
+        label: "Region map",
+        type: "regions"
       }
     ].filter(mapType => this.getTilesByMapType(mapType.type).length > 0 );
 
