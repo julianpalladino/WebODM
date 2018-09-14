@@ -22,6 +22,8 @@ class MapView extends React.Component {
   constructor(props){
     super(props);
 
+    console.log("hola");
+
     this.state = {
       opacity: 100,
       selectedMapType: props.selectedMapType,
@@ -40,6 +42,7 @@ class MapView extends React.Component {
 
     this.props.mapItems.forEach(mapItem => {
       mapItem.tiles.forEach(tile => {
+        console.log(mapItem);
         if (tile.type === type) tiles.push({
           url: tile.url,
           meta: mapItem.meta

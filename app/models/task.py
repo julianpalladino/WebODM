@@ -125,6 +125,7 @@ class Task(models.Model):
             },
             'dtm.tif': os.path.join('odm_dem', 'dtm.tif'),
             'dsm.tif': os.path.join('odm_dem', 'dsm.tif'),
+            'regions.tif': os.path.join('odm_dem', 'regions.tif')
     }
 
     STATUS_CODES = (
@@ -160,6 +161,7 @@ class Task(models.Model):
     orthophoto_extent = GeometryField(null=True, blank=True, srid=4326, help_text="Extent of the orthophoto created by OpenDroneMap")
     dsm_extent = GeometryField(null=True, blank=True, srid=4326, help_text="Extent of the DSM created by OpenDroneMap")
     dtm_extent = GeometryField(null=True, blank=True, srid=4326, help_text="Extent of the DTM created by OpenDroneMap")
+    regions_extent = GeometryField(null=True, blank=True, srid=4326, help_text="Extent of the regions created by OpenDroneMap")
 
     # mission
     created_at = models.DateTimeField(default=timezone.now, help_text="Creation date")
@@ -483,6 +485,8 @@ class Task(models.Model):
                                  'dsm_extent'),
                                 (os.path.realpath(self.assets_path("odm_dem", "dtm.tif")),
                                  'dtm_extent'),
+                                (os.path.realpath(self.assets_path("odm_dem", "regions.tif")),
+                                 'regions_extent'),
                             ]
 
                             for raster_path, field in extent_fields:
@@ -528,6 +532,7 @@ class Task(models.Model):
         if 'orthophoto.tif' in self.available_assets: types.append('orthophoto')
         if 'dsm.tif' in self.available_assets: types.append('dsm')
         if 'dtm.tif' in self.available_assets: types.append('dtm')
+        types.append('regions') #HOLA TODO agregar if
 
         return {
             'tiles': [{'url': self.get_tile_json_url(t), 'type': t} for t in types],

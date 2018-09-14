@@ -23,4 +23,9 @@ class Migration(migrations.Migration):
             name='dtm_extent',
             field=django.contrib.gis.db.models.fields.GeometryField(blank=True, help_text='Extent of the DTM created by OpenDroneMap', null=True, srid=4326),
         ),
+        migrations.AddField(
+            model_name='task',
+            name='regions_extent',
+            field=django.contrib.gis.db.models.fields.GeometryField(blank=True, help_text='Extent of the regions created by OpenDroneMap', null=True, srid=4326),
+        ),
     ]

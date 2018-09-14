@@ -51,7 +51,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Task
-        exclude = ('console_output', 'orthophoto_extent', 'dsm_extent', 'dtm_extent', )
+        exclude = ('console_output', 'orthophoto_extent', 'dsm_extent', 'dtm_extent', 'regions_extent', )
         read_only_fields = ('processing_time', 'status', 'last_error', 'created_at', 'pending_action', 'available_assets', )
 
 class TaskViewSet(viewsets.ViewSet):
@@ -60,7 +60,7 @@ class TaskViewSet(viewsets.ViewSet):
     A task represents a set of images and other input to be sent to a processing node.
     Once a processing node completes processing, results are stored in the task.
     """
-    queryset = models.Task.objects.all().defer('orthophoto_extent', 'dsm_extent', 'dtm_extent', 'console_output', )
+    queryset = models.Task.objects.all().defer('orthophoto_extent', 'dsm_extent', 'dtm_extent', 'console_output', 'regions_extent', )
     
     # We don't use object level permissions on tasks, relying on
     # project's object permissions instead (but standard model permissions still apply)
@@ -189,7 +189,7 @@ class TaskViewSet(viewsets.ViewSet):
 
 
 class TaskNestedView(APIView):
-    queryset = models.Task.objects.all().defer('orthophoto_extent', 'dtm_extent', 'dsm_extent', 'console_output', )
+    queryset = models.Task.objects.all().defer('orthophoto_extent', 'dtm_extent', 'dsm_extent', 'console_output', 'regions_extent', )
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
     def get_and_check_task(self, request, pk, annotate={}):
@@ -230,6 +230,7 @@ class TaskTilesJson(TaskNestedView):
             'orthophoto': task.orthophoto_extent,
             'dsm': task.dsm_extent,
             'dtm': task.dtm_extent,
+            'regions': task.regions_extent,
         }
 
         if not tile_type in extent_map:
