@@ -23,7 +23,7 @@
 ```
 
 Processing nodes are associated with zero or more tasks and
-take care of processing input images. Processing nodes are computers or virtual machines running [node-OpenDroneMap](https://github.com/OpenDroneMap/node-OpenDroneMap/) or any other API compatible with it.
+take care of processing input images. Processing nodes are computers or virtual machines running [node-OpenDroneMap](https://github.com/julianpalladino/node-OpenDroneMap/) or any other API compatible with it.
 
 Field | Type | Description
 ----- | ---- | -----------
@@ -45,7 +45,7 @@ help | Description of the option
 name | Name that identifies the option. This is the value you pass in the `name` key/value pair when creating a set of options for a new [Task](#task)
 type | Possible values are `int`, `float`, `string`, `bool`
 value | Default value if the option is not specified
-domain | Restriction of the range of values that this option allows. Examples are `float`, `negative integer`, `percent`, `float: 0 <= x <= 10`, etc. for all possible values, check [node-OpenDroneMap's odmOptions.js code](https://github.com/OpenDroneMap/node-OpenDroneMap/blob/master/libs/odmOptions.js#L135)
+domain | Restriction of the range of values that this option allows. Examples are `float`, `negative integer`, `percent`, `float: 0 <= x <= 10`, etc. for all possible values, check [node-OpenDroneMap's odmOptions.js code](https://github.com/julianpalladino/node-OpenDroneMap/blob/master/libs/odmOptions.js#L135)
 
 
 ### Add a processing node

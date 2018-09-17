@@ -53,7 +53,7 @@ auto_processing_node | boolean | Whether WebODM should automatically assign the 
 status | int | One of [Status Codes](#status-codes), or `null` if no status is available.
 last_error | string | The last error message reported by a [Processing Node](#processing-node) in case of processing failure.
 options | JSON[] | JSON-encoded list of name/value pairs, where each pair represents a command line option to be passed to a [Processing Node](#processing-node).
-ground_control_points | string | Currently unused. See [#37](https://github.com/OpenDroneMap/WebODM/issues/37)
+ground_control_points | string | Currently unused. See [#37](https://github.com/julianpalladino/WebODM/issues/37)
 created_at | string | Creation date and time
 pending_action | int | One of [Pending Actions](#pending-actions), or `null` if no pending action is set.
 

@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/OpenDroneMap/WebODM.svg?branch=master)](https://travis-ci.org/OpenDroneMap/WebODM) [![Join Gitter Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/OpenDroneMap/web-development) [![GitHub version](https://badge.fury.io/gh/OpenDroneMap%2FWebODM.svg)](https://badge.fury.io/gh/OpenDroneMap%2FWebODM)
 
-A free, user-friendly, extendable application and [API](http://docs.webodm.org) for drone image processing. Generate georeferenced maps, point clouds, elevation models and textured 3D models from aerial images. It uses [OpenDroneMap](https://github.com/OpenDroneMap/OpenDroneMap) for processing.
+A free, user-friendly, extendable application and [API](http://docs.webodm.org) for drone image processing. Generate georeferenced maps, point clouds, elevation models and textured 3D models from aerial images. It uses [OpenDroneMap](https://github.com/julianpalladino/OpenDroneMap) for processing.
 
 
 ![image](https://user-images.githubusercontent.com/1951843/33631371-5c55cc2c-d9d8-11e7-8609-b9032d4bbbb6.png)
@@ -45,7 +45,7 @@ A free, user-friendly, extendable application and [API](http://docs.webodm.org) 
 
 * From the Docker Quickstart Terminal or Powershell (Windows), or from the command line (Mac / Linux), type:
 ```bash
-git clone https://github.com/OpenDroneMap/WebODM --config core.autocrlf=input --depth 1
+git clone https://github.com/julianpalladino/WebODM --config core.autocrlf=input --depth 1
 cd WebODM
 ./webodm.sh start
 ```
@@ -79,7 +79,7 @@ For Windows and macOS users an [installer](https://www.webodm.org/installer) is 
 
 ### Add More Processing Nodes
 
-WebODM can be linked to one or more processing nodes running [node-OpenDroneMap](https://github.com/OpenDroneMap/node-OpenDroneMap). The default configuration already includes a "node-odm-1" processing node which runs on the same machine as WebODM, just to help you get started. As you become more familiar with WebODM, you might want to install processing nodes on separate machines.
+WebODM can be linked to one or more processing nodes running [node-OpenDroneMap](https://github.com/julianpalladino/node-OpenDroneMap). The default configuration already includes a "node-odm-1" processing node which runs on the same machine as WebODM, just to help you get started. As you become more familiar with WebODM, you might want to install processing nodes on separate machines.
 
 Adding more processing nodes will allow you to run multiple jobs in parallel. 
 
@@ -120,13 +120,13 @@ While starting WebODM you get: `'WaitNamedPipe','The system cannot find the file
 While Accessing the WebODM interface you get: `OperationalError at / could not translate host name “db” to address: Name or service not known` or `ProgrammingError at / relation “auth_user” does not exist` | Try restarting your computer, then type: `./webodm.sh restart`
 Task output or console shows one of the following:<ul><li>`MemoryError`</li><li>`Killed`</li></ul> |  Make sure that your Docker environment has enough RAM allocated: [MacOS Instructions](http://stackoverflow.com/a/39720010), [Windows Instructions](https://docs.docker.com/docker-for-windows/#advanced)
 After an update, you get: `django.contrib.auth.models.DoesNotExist: Permission matching query does not exist.` | Try to remove your WebODM folder and start from a fresh git clone
-Task fails with `Process exited with code null`, no task console output - OR - console output shows `Illegal Instruction` - OR - console output shows `Child returned 132` | If the computer running node-opendronemap is using an old or 32bit CPU, you need to compile [OpenDroneMap](https://github.com/OpenDroneMap/OpenDroneMap) from sources and setup node-opendronemap natively. You cannot use docker. Docker images work with CPUs with 64-bit extensions, MMX, SSE, SSE2, SSE3 and SSSE3 instruction set support or higher.
+Task fails with `Process exited with code null`, no task console output - OR - console output shows `Illegal Instruction` - OR - console output shows `Child returned 132` | If the computer running node-opendronemap is using an old or 32bit CPU, you need to compile [OpenDroneMap](https://github.com/julianpalladino/OpenDroneMap) from sources and setup node-opendronemap natively. You cannot use docker. Docker images work with CPUs with 64-bit extensions, MMX, SSE, SSE2, SSE3 and SSSE3 instruction set support or higher.
 On Windows, docker-compose fails with `Failed to execute the script docker-compose` | Make sure you have enabled VT-x virtualization in the BIOS
 Cannot access WebODM using Microsoft Edge on Windows 10 | Try to tweak your internet properties according to [these instructions](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)
 Getting a `No space left on device` error, but hard drive has enough space left | Docker on Windows by default will allocate only 20GB of space to the default docker-machine. You need to increase that amount. See [this link](http://support.divio.com/local-development/docker/managing-disk-space-in-your-docker-vm) and [this link](https://www.howtogeek.com/124622/how-to-enlarge-a-virtual-machines-disk-in-virtualbox-or-vmware/)
 Cannot start WebODM via `./webodm.sh start`, error messages are different at each retry | You could be running out of memory. Make sure you have enough RAM available. 2GB should be the recommended minimum, unless you know what you are doing
 
-Have you had other issues? Please [report them](https://github.com/OpenDroneMap/WebODM/issues/new) so that we can include them in this document.
+Have you had other issues? Please [report them](https://github.com/julianpalladino/WebODM/issues/new) so that we can include them in this document.
 
 ### Backup and Restore
 
@@ -182,9 +182,9 @@ On some platforms (eg. Windows), if you want to manage plugins, you will need to
 
 Small customizations such as changing the application colors, name, logo, or addying custom CSS/HTML/Javascript can be performed directly from the Customize -- Brand/Theme panels within WebODM. No need to fork or change the code.
 
-More advanced customizations can be achieved by writing [plugins](https://github.com/OpenDroneMap/WebODM/tree/master/plugins). This is the preferred way to add new functionality to WebODM since it requires less effort than maintaining a separate fork. The plugin system features server-side [signals](https://github.com/OpenDroneMap/WebODM/blob/master/app/plugins/signals.py) that can be used to be notified of various events, a ES6/React build system, a dynamic [client-side API](https://github.com/OpenDroneMap/WebODM/tree/master/app/static/app/js/classes/plugins) for adding elements to the UI, a built-in data store, an async task runner, a GRASS engine, hooks to add menu items and functions to rapidly inject CSS, Javascript and Django views.
+More advanced customizations can be achieved by writing [plugins](https://github.com/julianpalladino/WebODM/tree/master/plugins). This is the preferred way to add new functionality to WebODM since it requires less effort than maintaining a separate fork. The plugin system features server-side [signals](https://github.com/julianpalladino/WebODM/blob/master/app/plugins/signals.py) that can be used to be notified of various events, a ES6/React build system, a dynamic [client-side API](https://github.com/julianpalladino/WebODM/tree/master/app/static/app/js/classes/plugins) for adding elements to the UI, a built-in data store, an async task runner, a GRASS engine, hooks to add menu items and functions to rapidly inject CSS, Javascript and Django views.
 
-The plugin system is still in beta. The best source of documentation currently is to look at existing [code](https://github.com/OpenDroneMap/WebODM/tree/master/plugins). If a particular hook / entrypoint for your plugin does not yet exist, [request it](https://github.com/OpenDroneMap/WebODM/issues). We are adding hooks and entrypoints as we go.
+The plugin system is still in beta. The best source of documentation currently is to look at existing [code](https://github.com/julianpalladino/WebODM/tree/master/plugins). If a particular hook / entrypoint for your plugin does not yet exist, [request it](https://github.com/julianpalladino/WebODM/issues). We are adding hooks and entrypoints as we go.
 
 To create a plugin simply copy the `plugins/test` plugin into a new directory (for example, `plugins/myplugin`), then modify `manifest.json`, `plugin.py` and issue a `./webodm.sh restart`.
 
@@ -194,11 +194,11 @@ See the [API documentation page](http://docs.webodm.org).
 
 ## OpenDroneMap, node-OpenDroneMap, WebODM... what?
 
-The [OpenDroneMap project](https://github.com/OpenDroneMap/) is composed of several components.
+The [OpenDroneMap project](https://github.com/julianpalladino/) is composed of several components.
 
-- [OpenDroneMap](https://github.com/OpenDroneMap/OpenDroneMap) is a command line toolkit that processes aerial images. Users comfortable with the command line are probably OK using this component alone.
-- [node-OpenDroneMap](https://github.com/OpenDroneMap/node-OpenDroneMap) is a lightweight interface and API (Application Program Interface) built directly on top of [OpenDroneMap](https://github.com/OpenDroneMap/OpenDroneMap). Users not comfortable with the command line can use this interface to process aerial images and developers can use the API to build applications. Features such as user authentication, map displays, etc. are not provided.
-- [WebODM](https://github.com/OpenDroneMap/WebODM) adds more features such as user authentication, map displays, 3D displays, a higher level API and the ability to orchestrate multiple processing nodes (run jobs in parallel). Processing nodes are simply servers running [node-OpenDroneMap](https://github.com/OpenDroneMap/node-OpenDroneMap).
+- [OpenDroneMap](https://github.com/julianpalladino/OpenDroneMap) is a command line toolkit that processes aerial images. Users comfortable with the command line are probably OK using this component alone.
+- [node-OpenDroneMap](https://github.com/julianpalladino/node-OpenDroneMap) is a lightweight interface and API (Application Program Interface) built directly on top of [OpenDroneMap](https://github.com/julianpalladino/OpenDroneMap). Users not comfortable with the command line can use this interface to process aerial images and developers can use the API to build applications. Features such as user authentication, map displays, etc. are not provided.
+- [WebODM](https://github.com/julianpalladino/WebODM) adds more features such as user authentication, map displays, 3D displays, a higher level API and the ability to orchestrate multiple processing nodes (run jobs in parallel). Processing nodes are simply servers running [node-OpenDroneMap](https://github.com/julianpalladino/node-OpenDroneMap).
 
 ![webodm](https://cloud.githubusercontent.com/assets/1951843/25567386/5aeec7aa-2dba-11e7-9169-aca97b70db79.png)
 
@@ -206,12 +206,12 @@ In general, follow these guidelines to find out what you should use:
 
 I am a... | Best choice
 --------- | -----------
-End user, I'm not really comfortable with the command line | [WebODM](https://github.com/OpenDroneMap/WebODM)
-End user, I like shell commands, I need to process images for myself. I use other software to display processing results |  [OpenDroneMap](https://github.com/OpenDroneMap/OpenDroneMap)
-End user, I can work with the command line, but I'd rather not. I use other software to display processing results  |  [node-OpenDroneMap](https://github.com/OpenDroneMap/node-OpenDroneMap)
-End user, I need a drone mapping application for my organization that everyone can use. | [WebODM](https://github.com/OpenDroneMap/WebODM)
-Developer, I'm looking to build an app that displays map results and takes care of things like permissions | [WebODM](https://github.com/OpenDroneMap/WebODM)
-Developer, I'm looking to build an app that will stay behind a firewall and just needs raw results | [node-OpenDroneMap](https://github.com/OpenDroneMap/node-OpenDroneMap)
+End user, I'm not really comfortable with the command line | [WebODM](https://github.com/julianpalladino/WebODM)
+End user, I like shell commands, I need to process images for myself. I use other software to display processing results |  [OpenDroneMap](https://github.com/julianpalladino/OpenDroneMap)
+End user, I can work with the command line, but I'd rather not. I use other software to display processing results  |  [node-OpenDroneMap](https://github.com/julianpalladino/node-OpenDroneMap)
+End user, I need a drone mapping application for my organization that everyone can use. | [WebODM](https://github.com/julianpalladino/WebODM)
+Developer, I'm looking to build an app that displays map results and takes care of things like permissions | [WebODM](https://github.com/julianpalladino/WebODM)
+Developer, I'm looking to build an app that will stay behind a firewall and just needs raw results | [node-OpenDroneMap](https://github.com/julianpalladino/node-OpenDroneMap)
 
 ## Roadmap
 - [X] User Registration / Authentication
@@ -239,7 +239,7 @@ Don't see a feature that you want? [Help us make it happen](/CONTRIBUTING.md).
 We have several channels of communication for people to ask questions and to get involved with the community:
 
  - [OpenDroneMap Community Forum](http://community.opendronemap.org/c/webodm)
- - [Report Issues](https://github.com/OpenDroneMap/WebODM/issues)
+ - [Report Issues](https://github.com/julianpalladino/WebODM/issues)
 
 We also have a [Gitter Chat](https://gitter.im/OpenDroneMap/web-development), but the preferred way to communicate is via the [OpenDroneMap Community Forum](http://community.opendronemap.org/c/webodm).
 
@@ -247,7 +247,7 @@ We also have a [Gitter Chat](https://gitter.im/OpenDroneMap/web-development), bu
 
 There are many ways to contribute back to the project:
 
- - Help us test new and existing features and report [bugs](https://www.github.com/OpenDroneMap/WebODM/issues) and [feedback](http://community.opendronemap.org/c/webodm).
+ - Help us test new and existing features and report [bugs](https://www.github.com/julianpalladino/WebODM/issues) and [feedback](http://community.opendronemap.org/c/webodm).
  - [Share](http://community.opendronemap.org/c/datasets) your aerial datasets.
  - Help answer questions on the community [forum](http://community.opendronemap.org/c/webodm) and [chat](https://gitter.im/OpenDroneMap/web-development).
  - ⭐️ us on GitHub.
@@ -257,7 +257,7 @@ There are many ways to contribute back to the project:
 
 ## Become a Contributor
 
-The easiest way to get started is to take a look at our list of [outstanding issues](https://github.com/OpenDroneMap/WebODM/labels/help%20wanted) and pick one. You can also fix/improve something entirely new based on your experience with WebODM. All ideas are considered and people of all skill levels are welcome to contribute. 
+The easiest way to get started is to take a look at our list of [outstanding issues](https://github.com/julianpalladino/WebODM/labels/help%20wanted) and pick one. You can also fix/improve something entirely new based on your experience with WebODM. All ideas are considered and people of all skill levels are welcome to contribute. 
 
 You don't necessarily need to be a developer to become a contributor. We can use your help to write better documentation and improve the user interface texts and visuals. 
 
@@ -350,7 +350,7 @@ brew install postgres postgis
 Then these steps should be sufficient to get you up and running:
 
 ```bash
-git clone --depth 1 https://github.com/OpenDroneMap/WebODM
+git clone --depth 1 https://github.com/julianpalladino/WebODM
 ```
 
 Create a `WebODM/webodm/local_settings.py` file containing your database settings:

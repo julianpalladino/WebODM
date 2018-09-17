@@ -28,7 +28,7 @@ class Setting(models.Model):
                                       options={'quality': 90})
 
     organization_name = models.CharField(default='WebODM', max_length=255, blank=True, null=True, help_text="The name of your organization")
-    organization_website = models.URLField(default='https://github.com/OpenDroneMap/WebODM/', max_length=255, blank=True, null=True, help_text="The website URL of your organization")
+    organization_website = models.URLField(default='https://github.com/julianpalladino/WebODM/', max_length=255, blank=True, null=True, help_text="The website URL of your organization")
     theme = models.ForeignKey(Theme, blank=False, null=False, on_delete=models.DO_NOTHING,
                               help_text="Active theme")
 

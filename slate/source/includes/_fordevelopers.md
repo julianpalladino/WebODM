@@ -2,15 +2,15 @@
 
 ## Development Quickstart
 
-1. Make a fork of the [WebODM repository](https://github.com/OpenDroneMap/WebODM/)
+1. Make a fork of the [WebODM repository](https://github.com/julianpalladino/WebODM/)
 2. Clone your repository in a directory
 3. Create a new branch: `git checkout -b branchname`.
 4. [Setup a development environment](#setup-a-development-environment) either with [docker](#docker-setup) or [natively](#native-setup).
 5. Commit the changes: `git commit -a -m "describe your changes"`
 6. Push the changes to your repository: `git push origin branchname`
-7. Create a [pull request](https://github.com/OpenDroneMap/WebODM/compare) 
+7. Create a [pull request](https://github.com/julianpalladino/WebODM/compare) 
 
-We don't have many rules. Follow the guidelines indicated in the [Contributing](https://github.com/OpenDroneMap/WebODM/blob/master/CONTRIBUTING.md) document, be nice to others and you'll do great! :)
+We don't have many rules. Follow the guidelines indicated in the [Contributing](https://github.com/julianpalladino/WebODM/blob/master/CONTRIBUTING.md) document, be nice to others and you'll do great! :)
 
 ## Setup a Development Environment
 
@@ -20,7 +20,7 @@ Once you have a development environment, read about the [project overview](#proj
 
 ### Docker Setup
 
-Follow the [Getting Started](https://github.com/OpenDroneMap/WebODM#getting-started) instructions, then run:
+Follow the [Getting Started](https://github.com/julianpalladino/WebODM#getting-started) instructions, then run:
 
 `./devenv.sh start`
 
@@ -28,7 +28,7 @@ That's it! You can modify any of the files, including SASS and React.js files. C
 
 ### Native Setup
 
-If you can follow the instructions to [run WebODM natively](https://github.com/OpenDroneMap/WebODM#run-it-natively), you should be able to make changes to the code directly.
+If you can follow the instructions to [run WebODM natively](https://github.com/julianpalladino/WebODM#run-it-natively), you should be able to make changes to the code directly.
 
 ## Run Unit Tests
 
@@ -51,7 +51,7 @@ Directories of interest are listed as follow:
 Directory | Description
 --------- | -----------
 `/app`	  | Main application, includes the UI components, API, tests and backend logic.
-`/nodeodm`| Application that bridges the communication between WebODM and [node-OpenDroneMap](https://github.com/OpenDroneMap/node-OpenDroneMap). Includes its own unit tests and models.
+`/nodeodm`| Application that bridges the communication between WebODM and [node-OpenDroneMap](https://github.com/julianpalladino/node-OpenDroneMap). Includes its own unit tests and models.
 `/webodm` | Django's main project directory. Setting files are here.
 
 ### Frontend

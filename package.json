@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OpenDroneMap/WebODM.git"
+    "url": "git+https://github.com/julianpalladino/WebODM.git"
   },
   "keywords": [
     "opendronemap"
@@ -17,9 +17,9 @@
   "author": "",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/OpenDroneMap/WebODM/issues"
+    "url": "https://github.com/julianpalladino/WebODM/issues"
   },
-  "homepage": "https://github.com/OpenDroneMap/WebODM#readme",
+  "homepage": "https://github.com/julianpalladino/WebODM#readme",
   "dependencies": {
     "@babel/core": "^7.0.0-beta.54",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",

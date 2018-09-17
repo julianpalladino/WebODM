@@ -341,7 +341,7 @@ resetpassword(){
 		if [[ "$?" -eq 0 ]]; then
 			echo -e "\033[1mPassword changed!\033[0m"
 		else
-			echo -e "\033[91mCould not change administrator password. If you need help, please visit https://github.com/OpenDroneMap/WebODM/issues/ \033[39m"
+			echo -e "\033[91mCould not change administrator password. If you need help, please visit https://github.com/julianpalladino/WebODM/issues/ \033[39m"
 		fi
 	else
 		usage

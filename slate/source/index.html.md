@@ -5,9 +5,9 @@ language_tabs:
   - code
 
 toc_footers:
-  - <a href='https://github.com/OpenDroneMap/WebODM'>WebODM on GitHub</a>
-  - <a href='https://github.com/OpenDroneMap/OpenDroneMap'>OpenDroneMap on GitHub</a>
-  - <a href='https://github.com/OpenDroneMap/node-OpenDroneMap'>node-OpenDroneMap on GitHub</a>
+  - <a href='https://github.com/julianpalladino/WebODM'>WebODM on GitHub</a>
+  - <a href='https://github.com/julianpalladino/OpenDroneMap'>OpenDroneMap on GitHub</a>
+  - <a href='https://github.com/julianpalladino/node-OpenDroneMap'>node-OpenDroneMap on GitHub</a>
 
 search: true
 

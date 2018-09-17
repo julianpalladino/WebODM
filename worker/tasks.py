@@ -54,7 +54,7 @@ def process_task(taskId):
             task.process()
         except Exception as e:
             logger.error(
-                "Uncaught error! This is potentially bad. Please report it to http://github.com/OpenDroneMap/WebODM/issues: {} {}".format(
+                "Uncaught error! This is potentially bad. Please report it to http://github.com/julianpalladino/WebODM/issues: {} {}".format(
                     e, traceback.format_exc()))
             if settings.TESTING: raise e
     finally:
