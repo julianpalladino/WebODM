@@ -238,6 +238,10 @@ start(){
     fi
 
 	run "$command start || $command up"
+
+	# ADDS REGION COLUMN:
+	docker exec -ti $(docker ps -q --filter "name=db") sh -c "psql -U postgres -d webodm_dev -c 'ALTER TABLE app_task ADD COLUMN regions_extent geometry(Geometry,4326);'"
+
 }
 
 down(){
